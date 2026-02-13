@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Pretty Princess Su ❤️</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #ffe5ec; /* Pretty Pink */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(255, 75, 110, 0.2);
+            z-index: 10;
+            max-width: 500px;
+            margin: 20px;
+            border: 2px solid #ffb3c1;
+        }
+
+        h1 {
+            color: #ff4d6d;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .inside-joke {
+            color: #fb6f92;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .message-body {
+            color: #590d22;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            text-align: left;
+            background: #fff0f3;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #ff4d6d;
+            box-shadow: inset 0 0 10px rgba(255, 179, 193, 0.2);
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 2rem;
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: bold;
+        }
+
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        #noBtn {
+            background-color: #ffb3c1;
+            color: white;
+            position: relative;
+        }
+
+        /* Floating Animation */
+        .float-item {
+            position: absolute;
+            font-size: 30px;
+            user-select: none;
+            animation: floatUp 4s linear infinite;
+            opacity: 0;
+            bottom: -50px;
+            pointer-events: none;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="quiz">
+            <h1>Hey Su! ❤️</h1>
+            <p class="inside-joke">"You're avocado to me too..." 🥑</p>
+            <p style="font-size: 1.4rem; color: #ff4d6d; font-weight: bold;">Will you be my Valentine?</p>
+            <div class="buttons">
+                <button id="yesBtn" onclick="celebrate()">YES!</button>
+                <button id="noBtn" onmouseover="moveButton()">No</button>
+            </div>
+        </div>
+
+        <div id="celebration" style="display:none;">
+            <h1 style="font-size: 1.8rem;">Yay! 🐰💖</h1>
+            <div class="message-body">
+                hai my pretty princess, you're so avocado to me and i promise that you'll always be my one and only avocado. 
+                I love you so much and I've never stopped loving you ever since the day we first started dating eachother, 
+                ill always cherish and appreciate you and what we have now. I love you so much baby
+            </div>
+            <p style="color: #ff4d6d; font-weight: bold; font-size: 1.2rem;">Forever Yours. ❤️</p>
+        </div>
+    </div>
+
+    <script>
+        // Make the "No" button run away
+        function moveButton() {
+            const btn = document.getElementById('noBtn');
+            const padding = 100;
+            const x = Math.random() * (window.innerWidth - btn.offsetWidth - padding);
+            const y = Math.random() * (window.innerHeight - btn.offsetHeight - padding);
+            
+            btn.style.position = 'fixed';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+
+        // Celebrate with Bunny rain
+        function celebrate() {
+            document.getElementById('quiz').style.display = 'none';
+            document.getElementById('celebration').style.display = 'block';
+            
+            // Start the bunny and heart rain
+            setInterval(createFloatingItem, 200);
+        }
+
+        function createFloatingItem() {
+            const items = ['🐰', '❤️', '💖', '🐰', '✨', '🌸'];
+            const item = document.createElement('div');
+            item.classList.add('float-item');
+            item.innerHTML = items[Math.floor(Math.random() * items.length)];
+            item.style.left = Math.random() * 100 + 'vw';
+            item.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            document.body.appendChild(item);
+            
+            setTimeout(() => { item.remove(); }, 4000);
+        }
+    </script>
+</body>
+</html>
